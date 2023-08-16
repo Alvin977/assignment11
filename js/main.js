@@ -9,11 +9,10 @@ async function getData() {
         "July", "August", "September", "October", "November", "December"
     ];
     if (currentLocation == "") {
-        let firstReq = await fetch("https://geo.ipify.org/api/v2/country?apiKey=at_ttTif7FnIWbWquaqaKfdhD3NL94UL")
+        let firstReq = await fetch("https://api.ipgeolocation.io/ipgeo?apiKey=6308b4de47224be19651264a12bf89f3")
         let locate = await firstReq.json()
-        let locateArr=locate.location.region.split(" ")
-        currentLocation = locateArr[0]
-        console.log(currentLocation);
+        currentLocation =  locate.city
+      
 
     }
     let secondReq = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=7feaa2d50e1140f19d0213719230608&q=${currentLocation}&days=3`)
